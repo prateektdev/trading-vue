@@ -316,9 +316,9 @@
                 </a>
               </li>
               <li>
-                <a href="profile.html">
+                <router-link to="/profile">
                   <i class="fa fa-user"></i> Profile
-                </a>
+                </router-link>
               </li>
               <li>
                 <a href="#">
