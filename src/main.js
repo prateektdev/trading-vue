@@ -24,12 +24,13 @@ Vue.loadScript("./assets/plugins/flot-chart/jquery.flot.js").then(() => console.
 Vue.loadScript("./assets/plugins/flot-chart/jquery.flot.time.js").then(() => console.log("flot time"));
 Vue.loadScript("./assets/js/chart-flot.js").then(() => console.log("chart-flot"));
 
-Vue.loadScript("./assets/plugins/chartjs-chart/Chart.min.js").then(() => console.log("chart-min"));
-Vue.loadScript("./assets/plugins/swiper/swiper.js").then(() => console.log("swipper"));
+Vue.loadScript("./assets/plugins/chartjs-chart/Chart.min.js").then(() => console.log("charts-min"));
+Vue.loadScript("./assets/plugins/swiper/swiper.js").then(() => {console.log("swipper") 
+Vue.loadScript("./assets/js/scripts.js").then(() => console.log("script"));});
 Vue.loadScript("./assets/js/dashboard-crypto.js").then(() => console.log("crypto"));
 Vue.loadScript("./assets/js/chart-sparkline.js").then(() => console.log("spark-line"));
 Vue.loadScript("./assets/js/chart-chartjs.js").then(() => console.log("chartjs"));
-Vue.loadScript("./assets/js/scripts.js").then(() => console.log("chart-min"));
+
 
 new Vue({
   router,

@@ -1,53 +1,83 @@
 <template>
   <div class="page-sidebar fixedscroll">
     <!-- MAIN MENU - START -->
-    <div class="page-sidebar-wrapper crypto" id="main-menu-wrapper">
-      <ul class="wraplist">
-        <li class="menusection">Main</li>
-        <li class>
-          <a href="index-dashboard.html">
-            <i class="fa fa-file-text" aria-hidden="true"></i>
-            <span class="title">Watchlist</span>
-          </a>
-        </li>
-        <li class>
-          <a href="index-dashboard.html">
-            <i class="fa fa-line-chart" aria-hidden="true"></i>
-            <span class="title">Trading</span>
-          </a>
-        </li>
-        <li class>
-          <a href="index-dashboard.html">
-            <i class="fa fa-bar-chart" aria-hidden="true"></i>
-            <span class="title">Market</span>
-          </a>
-        </li>
-        <li class>
-          <a href="index-dashboard.html">
-            <i class="fa fa-pie-chart" aria-hidden="true"></i>
-            <span class="title">Portfolio</span>
-          </a>
-        </li>
-        <li class>
-          <a href="index-dashboard.html">
-            <i class="fa fa-area-chart" aria-hidden="true"></i>
-            <span class="title">Report</span>
-          </a>
-        </li>
-        <li class>
-          <a href="payment.html">
-            <i class="fa fa-credit-card" aria-hidden="true"></i>
-            <span class="title">Deposit</span>
-          </a>
-        </li>
-        <li class>
-          <a href="index-dashboard.html">
-            <i class="fa fa-wrench"></i>
-            <span class="title">Settings</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <div class="sidebar-wrapper sidebar-theme">
+            
+            <nav id="sidebar">
+                <ul class="list-unstyled menu-categories" id="accordionExample">
+                    
+
+                  
+
+                    <li class="menu">
+                        <a href="#" aria-expanded="false" class="dropdown-toggle">
+                            <div class="menu-it">
+                                <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                <span>Watchlist</span>
+                            </div>
+                        </a>
+                    </li>
+					
+					<li class="menu">
+                        <a href="#" aria-expanded="false" class="dropdown-toggle active">
+                            <div class="menu-it">
+                                <i class="fa fa-line-chart" aria-hidden="true"></i>
+                                <span>Trading</span>
+                            </div>
+                        </a>
+                    </li>
+					
+					<li class="menu">
+                        <a href="#" aria-expanded="false" class="dropdown-toggle">
+                            <div class="menu-it">
+                                <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                <span>Market</span>
+                            </div>
+                        </a>
+                    </li>
+					
+					<li class="menu">
+                        <a href="#" aria-expanded="false" class="dropdown-toggle">
+                            <div class="menu-it">
+                                <i class="fa fa-stop-circle-o" aria-hidden="true"></i>
+                                <span>Portfolio</span>
+                            </div>
+                        </a>
+                    </li>
+					
+					<li class="menu">
+                        <a href="#" aria-expanded="false" class="dropdown-toggle">
+                            <div class="menu-it">
+                                <i class="fa fa-bug" aria-hidden="true"></i>
+                                <span>Report</span>
+                            </div>
+                        </a>
+                    </li>
+					
+					<li class="menu">
+                        <a href="#" aria-expanded="false" class="dropdown-toggle">
+                            <div class="menu-it">
+                                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                                <span>Deposit</span>
+                            </div>
+                        </a>
+                    </li>
+
+                   <li class="menu setting">
+                        <a href="#" aria-expanded="false" class="dropdown-toggle">
+                            <div class="menu-it">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                <span>Setting</span>
+                            </div>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <!-- <div class="shadow-bottom"></div> -->
+                
+            </nav>
+
+        </div>
     <!-- MAIN MENU - END -->
   </div>
 </template>

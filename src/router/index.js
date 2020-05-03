@@ -5,7 +5,7 @@ import Register from '../components/Register.vue'
 import Dashboard from '../components/Dashboard.vue'
 import Profile from '../components/Profile.vue'
 import Payment from '../components/Payment.vue'
-
+import Trading from '../components/Trading.vue';
 const routes = [
     { path: '/', component: Login },
     { path: '/login', component: Login },
@@ -13,6 +13,7 @@ const routes = [
     { path: '/dashboard', component: Dashboard },
     { path: '/profile', component: Profile },
     { path: '/payment', component: Payment },
+    { path: '/trading', component: Trading },
     /* { path: '/exercise-log', component: ExerciseLog },
     { path: '/exercise', component: Exercise },
     { path: '/about', component: About },

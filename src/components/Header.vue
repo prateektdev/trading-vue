@@ -1,341 +1,72 @@
 <template>
-  <div class="page-topbar gradient-blue1">
-    <div class="logo-area crypto"></div>
-    <div class="quick-area">
-      <div class="pull-left">
-        <ul class="info-menu left-links list-inline list-unstyled">
-          <li class="sidebar-toggle-wrap">
-            <a href="#" data-toggle="sidebar" class="sidebar_toggle">
-              <i class="fa fa-bars"></i>
-            </a>
-          </li>
-          <li class="topnav-item item1">
-            <a href="#" class="new-link w-text">
-              Schedule
-              <span class="badge badge-primary ml-5">New</span>
-            </a>
-          </li>
-          <li class="topnav-item active item2">
-            <a href="#" class="nav-link w-text">
-              <i class="fa fa-area-chart mr-10"></i>Reports
-            </a>
-          </li>
-          <li class="topnav-item item3">
-            <a href="#" class="nav-link w-text">
-              <i class="fa fa-sitemap mr-10"></i>Trading
-            </a>
-          </li>
-
-          <li class="hidden-sm hidden-xs searchform">
-            <form action="#" method="post">
-              <div class="input-group">
-                <span class="input-group-addon">
-                  <i class="fa fa-search"></i>
-                </span>
-                <input
-                  type="text"
-                  class="form-control animated fadeIn"
-                  placeholder="Search & Enter"
-                />
-              </div>
-              <input type="submit" value />
-            </form>
-          </li>
-        </ul>
-      </div>
-      <div class="pull-right">
-        <ul class="info-menu right-links list-inline list-unstyled">
-          <li class="notify-toggle-wrapper spec">
-            <a href="#" data-toggle="dropdown" class="toggle">
-              <i class="fa fa-bell"></i>
-              <span class="badge badge-accent">3</span>
-            </a>
-            <ul class="dropdown-menu notifications animated fadeIn">
-              <li class="total">
-                <span class="small">
-                  You have
-                  <strong>3</strong> new notifications.
-                  <a href="javascript:;" class="pull-right">Mark all as Read</a>
-                </span>
-              </li>
-              <li class="list">
-                <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-                  <li class="unread available">
-                    <!-- available: success, warning, info, error -->
-                    <a href="javascript:;">
-                      <div class="notice-icon">
-                        <i class="fa fa-check"></i>
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Successful transaction of 0.01 BTC</strong>
-                          <span class="time small">15 mins ago</span>
-                        </span>
-                      </div>
+    <!--  BEGIN NAVBAR  -->
+    <div class="header-container fixed-top">
+        <header class="header navbar navbar-expand-sm">
+           <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
+			
+            <ul class="navbar-item theme-brand flex-row  text-center">
+                <li class="nav-item theme-logo">
+                    <a href="index.html">
+                        <img src="assets/img/logo.png" class="navbar-logo" alt="logo">
                     </a>
-                  </li>
-                  <li class="unread away">
-                    <!-- available: success, warning, info, error -->
-                    <a href="javascript:;">
-                      <div class="notice-icon">
-                        <i class="fa fa-clock-o"></i>
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>4 of Pending Transactions!</strong>
-                          <span class="time small">45 mins ago</span>
-                        </span>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="busy">
-                    <!-- available: success, warning, info, error -->
-                    <a href="javascript:;">
-                      <div class="notice-icon">
-                        <i class="fa fa-times"></i>
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Cancelled Order of 200 ICO</strong>
-                          <span class="time small">1 hour ago</span>
-                        </span>
-                      </div>
-                    </a>
-                  </li>
-
-                  <li class="available">
-                    <!-- available: success, warning, info, error -->
-                    <a href="javascript:;">
-                      <div class="notice-icon">
-                        <i class="fa fa-check"></i>
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Great Speed Notify of 1.34 LTC</strong>
-                          <span class="time small">14th Mar</span>
-                        </span>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-
-              <li class="external">
-                <a href="javascript:;">
-                  <span>Read All Notifications</span>
-                </a>
-              </li>
+                </li>
             </ul>
-          </li>
-          <li class="message-toggle-wrapper spec">
-            <a href="#" data-toggle="dropdown" class="toggle mr-15">
-              <i class="fa fa-envelope"></i>
-              <span class="badge badge-accent">7</span>
-            </a>
-            <ul class="dropdown-menu messages animated fadeIn">
-              <li class="list">
-                <ul class="dropdown-menu-list list-unstyled ps-scrollbar">
-                  <li class="unread status-available">
-                    <a href="javascript:;">
-                      <div class="user-img">
-                        <img
-                          src="../assets/data/profile/avatar-1.png"
-                          alt="user-image"
-                          class="img-circle img-inline"
-                        />
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Clarine Vassar</strong>
-                          <span class="time small">- 15 mins ago</span>
-                          <span class="profile-status available pull-right"></span>
-                        </span>
-                        <span class="desc small">Lorem ipsum dolor sit elit fugiat molest.</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="status-away">
-                    <a href="javascript:;">
-                      <div class="user-img">
-                        <img
-                          src="../assets/data/profile/avatar-2.png"
-                          alt="user-image"
-                          class="img-circle img-inline"
-                        />
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Brooks Latshaw</strong>
-                          <span class="time small">- 45 mins ago</span>
-                          <span class="profile-status away pull-right"></span>
-                        </span>
-                        <span class="desc small">Lorem ipsum dolor sit elit fugiat molest.</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="status-busy">
-                    <a href="javascript:;">
-                      <div class="user-img">
-                        <img
-                          src="../assets/data/profile/avatar-3.png"
-                          alt="user-image"
-                          class="img-circle img-inline"
-                        />
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Clementina Brodeur</strong>
-                          <span class="time small">- 1 hour ago</span>
-                          <span class="profile-status busy pull-right"></span>
-                        </span>
-                        <span class="desc small">Lorem ipsum dolor sit elit fugiat molest.</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="status-offline">
-                    <a href="javascript:;">
-                      <div class="user-img">
-                        <img
-                          src="../assets/data/profile/avatar-4.png"
-                          alt="user-image"
-                          class="img-circle img-inline"
-                        />
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Carri Busey</strong>
-                          <span class="time small">- 5 hours ago</span>
-                          <span class="profile-status offline pull-right"></span>
-                        </span>
-                        <span class="desc small">Lorem ipsum dolor sit elit fugiat molest.</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="status-offline">
-                    <a href="javascript:;">
-                      <div class="user-img">
-                        <img
-                          src="../assets/data/profile/avatar-5.png"
-                          alt="user-image"
-                          class="img-circle img-inline"
-                        />
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Melissa Dock</strong>
-                          <span class="time small">- Yesterday</span>
-                          <span class="profile-status offline pull-right"></span>
-                        </span>
-                        <span class="desc small">Lorem ipsum dolor sit elit fugiat molest.</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="status-available">
-                    <a href="javascript:;">
-                      <div class="user-img">
-                        <img
-                          src="../assets/data/profile/avatar-1.png"
-                          alt="user-image"
-                          class="img-circle img-inline"
-                        />
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Verdell Rea</strong>
-                          <span class="time small">- 14th Mar</span>
-                          <span class="profile-status available pull-right"></span>
-                        </span>
-                        <span class="desc small">Lorem ipsum dolor sit elit fugiat molest.</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="status-busy">
-                    <a href="javascript:;">
-                      <div class="user-img">
-                        <img
-                          src="../assets/data/profile/avatar-2.png"
-                          alt="user-image"
-                          class="img-circle img-inline"
-                        />
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Linette Lheureux</strong>
-                          <span class="time small">- 16th Mar</span>
-                          <span class="profile-status busy pull-right"></span>
-                        </span>
-                        <span class="desc small">Lorem ipsum dolor sit elit fugiat molest.</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="status-away">
-                    <a href="javascript:;">
-                      <div class="user-img">
-                        <img
-                          src="../assets/data/profile/avatar-3.png"
-                          alt="user-image"
-                          class="img-circle img-inline"
-                        />
-                      </div>
-                      <div>
-                        <span class="name">
-                          <strong>Araceli Boatright</strong>
-                          <span class="time small">- 16th Mar</span>
-                          <span class="profile-status away pull-right"></span>
-                        </span>
-                        <span class="desc small">Lorem ipsum dolor sit elit fugiat molest.</span>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </li>
 
-              <li class="external">
-                <a href="javascript:;">
-                  <span>Read All Messages</span>
-                </a>
-              </li>
+            <ul class="navbar-item flex-row ml-md-0 ml-auto">
+                <li class="nav-item align-self-center search-animated">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search toggle-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <form class="form-inline search-full form-inline search" role="search">
+                        <div class="search-bar">
+                            <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search...">
+                        </div>
+                    </form>
+                </li>
             </ul>
-          </li>
-          <li class="profile">
-            <a href="#" data-toggle="dropdown" class="toggle">
-              <img
-                src="../assets/data/profile/profile.jpg"
-                alt="user-image"
-                class="img-circle img-inline"
-              />
-              <span>
-                Arnold Ramsy
-                <i class="fa fa-angle-down"></i>
-              </span>
-            </a>
-            <ul class="dropdown-menu profile animated fadeIn">
-              <li>
-                <a href="#">
-                  <i class="fa fa-wrench"></i> Settings
-                </a>
-              </li>
-              <li>
-                <router-link to="/profile">
-                  <i class="fa fa-user"></i> Profile
-                </router-link>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="fa fa-info"></i> Help
-                </a>
-              </li>
-              <li class="last">
-                <a href="login.html">
-                  <i class="fa fa-lock"></i> Logout
-                </a>
-              </li>
+			
+			
+
+            <ul class="navbar-item flex-row ml-md-auto">
+               <a href="#" class="deposit-btn">Deposit Fund</a>
+                <li class="nav-item dropdown language-dropdown">
+					
+					
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle live-btn" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        LIVE <i class="fa fa-caret-down" aria-hidden="true"></i>
+                    </a>
+                    <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"> <span class="align-self-center">&nbsp;<b>Virtual</b></span></a>
+                    </div>
+                </li>
+
+               
+
+                <li class="nav-item dropdown user-profile-dropdown">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <img src="assets/img/profile-3.jpg" alt="avatar">
+						<span>Apurba Das<br /><small class="text-info">$5201.00 USD</small></span>
+                    </a>
+                    <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
+                        <div class="">
+                            <div class="dropdown-item">
+                                <a href="user_profile.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> My Profile</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="apps_mailbox.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-inbox"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path></svg> Inbox</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="auth_lockscreen.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Lock Screen</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="auth_login.html"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Sign Out</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
             </ul>
-          </li>
-        </ul>
-      </div>
+        </header>
     </div>
-  </div>
+    <!--  END NAVBAR  -->
 </template>
 
 <script>
