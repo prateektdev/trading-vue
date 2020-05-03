@@ -7,7 +7,21 @@
 <script>
 export default {
   name: "App",
-  components: {}
+  components: {},
+  methods: {
+    toggleBodyClass(addRemoveClass, className) {
+      const el = document.body;
+
+      if (addRemoveClass === "addClass") {
+        el.classList.add(className);
+      } else {
+        el.classList.remove(className);
+      }
+    }
+  },
+  mounted() {
+    this.toggleBodyClass("addClass", "bodyBackground");
+  }
 };
 </script>
 
@@ -27,4 +41,15 @@ export default {
 
 @import "./assets/css/style.css";
 @import "./assets/css/responsive.css";
+
+.bodyBackground {
+  color: #718396;
+  height: 100%;
+  font-size: 0.875rem;
+  background: #192431;
+  overflow-x: hidden;
+  overflow-y: auto;
+  letter-spacing: 0.0312rem;
+  font-family: "Nunito", sans-serif;
+}
 </style>

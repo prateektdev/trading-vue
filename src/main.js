@@ -4,7 +4,11 @@ import VueRouter from 'vue-router'
 import router from './router'
 import LoadScript from 'vue-plugin-load-script';
 
+// global.jQuery = require('jquery');
+
 Vue.config.productionTip = false
+
+Vue.config.silent = true
 
 Vue.use(VueRouter)
 
@@ -25,8 +29,10 @@ Vue.loadScript("./assets/plugins/flot-chart/jquery.flot.time.js").then(() => con
 Vue.loadScript("./assets/js/chart-flot.js").then(() => console.log("chart-flot"));
 
 Vue.loadScript("./assets/plugins/chartjs-chart/Chart.min.js").then(() => console.log("charts-min"));
-Vue.loadScript("./assets/plugins/swiper/swiper.js").then(() => {console.log("swipper") 
-Vue.loadScript("./assets/js/scripts.js").then(() => console.log("script"));});
+Vue.loadScript("./assets/plugins/swiper/swiper.js").then(() => {
+  console.log("swipper")
+  Vue.loadScript("./assets/js/scripts.js").then(() => console.log("script"));
+});
 Vue.loadScript("./assets/js/dashboard-crypto.js").then(() => console.log("crypto"));
 Vue.loadScript("./assets/js/chart-sparkline.js").then(() => console.log("spark-line"));
 Vue.loadScript("./assets/js/chart-chartjs.js").then(() => console.log("chartjs"));
