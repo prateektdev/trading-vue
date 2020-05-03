@@ -1,24 +1,18 @@
 import VueRouter from 'vue-router'
 import HelloWorld from '../components/HelloWorld.vue'
-import Login from '../components/Login.vue'
-import Register from '../components/Register.vue'
 import Dashboard from '../components/Dashboard.vue'
-import Profile from '../components/Profile.vue'
-import Payment from '../components/Payment.vue'
+// import Login from '../components/Login.vue'
+// import Register from '../components/Register.vue'
+// import Profile from '../components/Profile.vue'
+// import Payment from '../components/Payment.vue'
 
 const routes = [
-    { path: '/', component: Login },
-    { path: '/login', component: Login },
-    { path: '/register', component: Register },
+    { path: '/', component: Dashboard },
     { path: '/dashboard', component: Dashboard },
+    /* { path: '/login', component: Login },
+    { path: '/register', component: Register },
     { path: '/profile', component: Profile },
-    { path: '/payment', component: Payment },
-    /* { path: '/exercise-log', component: ExerciseLog },
-    { path: '/exercise', component: Exercise },
-    { path: '/about', component: About },
-    { path: '/home', component: Home },
-    { path: '/suggestion', component: Suggestion },
-    { path: '/signup', component: Register }, */
+    { path: '/payment', component: Payment }, */
     { path: '/hello', component: HelloWorld },
 ];
 
