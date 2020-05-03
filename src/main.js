@@ -10,7 +10,9 @@ Vue.use(VueRouter)
 
 Vue.use(LoadScript)
 
-/* Vue.loadScript("https://code.jquery.com/jquery-1.12.4.min.js").then(() => console.log("easing loaded")); */
+/* Vue.loadScript("https://code.jquery.com/jquery-1.12.4.min.js").then(() => console.log("easing loaded"));
+mayur
+*/
 Vue.loadScript("./assets/js/jquery.easing.min.js").then(() => console.log("easing loaded"));
 Vue.loadScript("./assets/plugins/bootstrap/js/bootstrap.min.js").then(() => console.log("bootstrap loaded"));
 Vue.loadScript("./assets/plugins/pace/pace.min.js").then(() => console.log("pace loaded"));
