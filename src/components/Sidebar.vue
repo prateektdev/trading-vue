@@ -4,7 +4,7 @@
     <nav id="sidebar">
       <ul class="list-unstyled menu-categories" id="accordionExample">
         <li class="menu">
-          <a href="#" aria-expanded="false" class="dropdown-toggle">
+          <a href="/dashboard" aria-expanded="false" class="dropdown-toggle">
             <div class="menu-it">
               <i class="fa fa-file-text-o" aria-hidden="true"></i>
               <span>Watchlist</span>
@@ -13,7 +13,7 @@
         </li>
 
         <li class="menu">
-          <a href="#" aria-expanded="false" class="dropdown-toggle active">
+          <a href="/trading" aria-expanded="false" class="dropdown-toggle active">
             <div class="menu-it">
               <i class="fa fa-line-chart" aria-hidden="true"></i>
               <span>Trading</span>
@@ -22,7 +22,7 @@
         </li>
 
         <li class="menu">
-          <a href="#" aria-expanded="false" class="dropdown-toggle">
+          <a href="/market" aria-expanded="false" class="dropdown-toggle">
             <div class="menu-it">
               <i class="fa fa-bar-chart" aria-hidden="true"></i>
               <span>Market</span>
@@ -49,7 +49,7 @@
         </li>
 
         <li class="menu">
-          <a href="#" aria-expanded="false" class="dropdown-toggle">
+          <a href="/payment" aria-expanded="false" class="dropdown-toggle">
             <div class="menu-it">
               <i class="fa fa-credit-card" aria-hidden="true"></i>
               <span>Deposit</span>
