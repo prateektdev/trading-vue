@@ -9,7 +9,6 @@ fetchData = async() => {
     .then((res) => {
       return res.json();
     })
-    console.log(response)
     return JSON.stringify(response);
 };
 

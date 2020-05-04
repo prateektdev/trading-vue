@@ -69,7 +69,7 @@ wsServer.on("request", function (request) {
   connection.sendUTF("hello bro");
   setInterval(async() => {
     connection.sendUTF(await fetchData());
-  }, 10000);
+  }, 5000);
 });
 
 function originIsAllowed(origin) {
