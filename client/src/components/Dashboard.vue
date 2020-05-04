@@ -702,7 +702,7 @@ export default {
     }
   },
   created() {
-    this.connection = new WebSocket("wss://echo.websocket.org");
+    this.connection = new WebSocket("ws://localhost:3000");
     this.connection.onopen = event => {
       console.log(event);
       console.log("Successfully connected to the echo websocket server...");
