@@ -14,10 +14,12 @@ Vue.use(VueRouter)
 
 Vue.use(LoadScript)
 
+Vue.prototype.$apiUrl = "test url";
+
 /* Vue.loadScript("https://code.jquery.com/jquery-1.12.4.min.js").then(() => console.log("easing loaded"));
 mayur
 */
-Vue.loadScript("./assets/js/jquery.easing.min.js").then(() => console.log("easing loaded"));
+/* Vue.loadScript("./assets/js/jquery.easing.min.js").then(() => console.log("easing loaded"));
 Vue.loadScript("./assets/plugins/bootstrap/js/bootstrap.min.js").then(() => console.log("bootstrap loaded"));
 Vue.loadScript("./assets/plugins/pace/pace.min.js").then(() => console.log("pace loaded"));
 Vue.loadScript("./assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js").then(() => console.log("scro"));
@@ -35,7 +37,7 @@ Vue.loadScript("./assets/plugins/swiper/swiper.js").then(() => {
 });
 Vue.loadScript("./assets/js/dashboard-crypto.js").then(() => console.log("crypto"));
 Vue.loadScript("./assets/js/chart-sparkline.js").then(() => console.log("spark-line"));
-Vue.loadScript("./assets/js/chart-chartjs.js").then(() => console.log("chartjs"));
+Vue.loadScript("./assets/js/chart-chartjs.js").then(() => console.log("chartjs")); */
 
 
 new Vue({

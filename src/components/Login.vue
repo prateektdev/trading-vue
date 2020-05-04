@@ -1,5 +1,58 @@
 <template>
-  <div class="container">
+  <div class="col-md-12">
+    <div class="col-md-6 offset-3 mt-6">
+      <div class="card col-md-12">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p
+            class="card-text"
+          >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Login",
+  props: {
+    msg: String
+  },
+  methods: {
+    toggleBodyClass(addRemoveClass, className) {
+      const el = document.body;
+      if (addRemoveClass === "addClass") {
+        el.classList.add(className);
+      } else {
+        el.classList.remove(className);
+      }
+    }
+  },
+  mounted() {
+    this.toggleBodyClass("addClass", "bodyClass");
+  },
+  destroyed() {
+    this.toggleBodyClass("removeClass", "bodyClass");
+  }
+};
+</script>
+
+<style>
+.bodyClass {
+  color: #718396;
+  height: 100%;
+  font-size: 0.875rem;
+  background: #fff !important;
+  overflow-x: hidden;
+  overflow-y: auto;
+  letter-spacing: 0.0312rem;
+  font-family: "Nunito", sans-serif;
+}
+</style>
+
+  <!-- <div class="container">
     <div class="row">
       <div class="mt-90 col-lg-4 col-lg-offset-4">
         <div class="row">
@@ -71,35 +124,4 @@
         </div>
       </div>
     </div>
-  </div>
-</template>
-
-<script>
-export default {
-  name: "Login",
-  props: {
-    msg: String
-  },
-  methods: {
-    toggleBodyClass(addRemoveClass, className) {
-      const el = document.body;
-      if (addRemoveClass === "addClass") {
-        el.classList.add(className);
-      } else {
-        el.classList.remove(className);
-      }
-    }
-  },
-  mounted() {
-    this.toggleBodyClass("addClass", "login_page");
-    this.toggleBodyClass("addClass", "login-bg");
-  },
-  destroyed() {
-    this.toggleBodyClass("removeClass", "login_page");
-    this.toggleBodyClass("removeClass", "login-bg");
-  }
-};
-</script>
-
-<style>
-</style>
+  </div> -->

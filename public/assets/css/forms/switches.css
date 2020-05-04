@@ -18,8 +18,8 @@
 .switch .slider {
   position: absolute;
   cursor: pointer;
-  top: 0;
-  left: 0;
+  top: 9px;
+  left: 5px;
   right: 0;
   bottom: 0;
   background-color: #888ea8;
@@ -45,7 +45,11 @@
   transform: translateX(17px)
 }
 /* Rounded Slider Switches */
-.switch .slider.round { border-radius: 34px; }
+.switch .slider.round { 
+  border-radius: 34px; 
+  height: 18px;
+  width: 36px;
+}
 .switch .slider.round:before { border-radius: 50%; }
 
 /* Solid Switches*/

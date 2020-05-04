@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header />
+    <!-- <button @click="sendMessage('test send message')">send message</button> -->
     <div class="main-container" id="container">
       <div class="overlay"></div>
       <div class="search-overlay"></div>
@@ -216,7 +217,10 @@
                             </td>
                             <td>
                               <div class="td-content">170.71</div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Sell</button>
+                              <button
+                                @click="sendMessage('test send message')"
+                                class="btn btn-primary mb-4 mr-2 sell-btn"
+                              >Sell</button>
                             </td>
                             <td>
                               <div class="td-content">
@@ -506,26 +510,8 @@
               <div class="widget widget-table-two">
                 <!-- TradingView Widget BEGIN -->
                 <div class="tradingview-widget-container">
-                  <!-- <VueTradingView :options="{
-                    
-                  }" />-->
-                  <!-- <VueTradingView
-                    v-bind:options="{
-                      symbol: 'NASDAQ:AAPL',
-                      theme: 'dark',
-                      enable_publishing: false,
-                      allow_symbol_change: true,
-                      autosize: true,
-                      interval: 'D',
-                      timezone: 'Etc/UTC',
-                      style: '1',
-                      locale: 'in',
-                      toolbar_bg: '#f1f3f6',
-                    }"
-                  />-->
-
                   <VueTradingView v-bind:options="options" />
-                  <!-- <div id="tradingview_efc68"></div> -->
+
                   <div class="tradingview-widget-copyright">
                     <a
                       href="https://in.tradingview.com/symbols/NASDAQ-AAPL/"
@@ -535,8 +521,6 @@
                       <span class="blue-text">AAPL Chart</span>
                     </a> by TradingView
                   </div>
-                  <!-- <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                  <script type="text/javascript"></script>-->
                 </div>
                 <!-- TradingView Widget END -->
               </div>
@@ -679,9 +663,9 @@
 import Header from "./Header.vue";
 import Sidebar from "./Sidebar";
 import VueTradingView from "vue-trading-view";
+import axios from "axios";
 
 var $ = global.jQuery;
-
 window.$ = $;
 
 export default {
@@ -704,15 +688,45 @@ export default {
         toolbar_bg: "#f1f3f6",
         enable_publishing: false,
         allow_symbol_change: true
-      }
+      },
+      connection: null
     };
   },
   props: {
     msg: String
   },
+  methods: {
+    sendMessage(message) {
+      console.log(this.connection);
+      this.connection.send(message);
+    }
+  },
+  created() {
+    this.connection = new WebSocket("wss://echo.websocket.org");
+    this.connection.onopen = event => {
+      console.log(event);
+      console.log("Successfully connected to the echo websocket server...");
+    };
+    this.connection.onmessage = event => {
+      console.log("event triggered");
+      console.log(event);
+    };
+    let config = {
+      headers: {
+        Accept: "application/json"
+      }
+    };
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos/1", config)
+      .then(res => {
+        console.info(res.data);
+      })
+      .catch(err => {
+        console.info(err);
+      });
+  },
   mounted() {
-    const el = "input[name='demo_vertical']";
-    $(el).TouchSpin({
+    $("input[name='demo_vertical']").TouchSpin({
       verticalbuttons: true
     });
   }
@@ -720,4 +734,7 @@ export default {
 </script>
 
 <style scoped>
+.layout-spacing {
+  background-color: #192431 !important;
+}
 </style>

@@ -179,7 +179,6 @@ code { color: #e7515a; }
 
 .header-container {
     z-index: 1030;
-    border-bottom: 1px solid #060818;
 }
 .header-container .navbar {
     padding: 4px 0;
