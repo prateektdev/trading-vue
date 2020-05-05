@@ -65,8 +65,10 @@
                             </th>
                           </tr>
                         </thead>
-                        <tbody v-for="item in stockData" :key="item.id">
-                          <tr>
+                        <tbody>
+                          <tr v-for="(item) in stockData" :key="item.id">
+                            <!-- {{index}} -->
+                            <!-- :class="index==1 && highlight==true ?'highlight':''" -->
                             <td>
                               <div class="td-content">
                                 <span class="pricing">{{item.symbol||options.symbol}}</span>
@@ -74,9 +76,10 @@
                             </td>
                             <td>
                               <div class="td-content">
-                                <span class="discount-pricing">
-                                 {{Math.sign(item.change)==1 ?'+':''}}{{formatPrice(item.change)}}%
-                                </span>
+                                <span
+                                  class="discount-pricing"
+                                  :class="Math.sign(item.change)==1 ?'up':'down'"
+                                >{{Math.sign(item.change)==1 ?'+':''}}{{formatPrice(item.change)}}%</span>
                               </div>
                             </td>
                             <td>
@@ -93,7 +96,6 @@
                               <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
                             </td>
                           </tr>
-
                         </tbody>
                       </table>
                     </div>
@@ -346,8 +348,9 @@ export default {
       },
       connection: null,
       marketArray: [],
-      stockData:[],
-      flag: false
+      stockData: [],
+      flag: false,
+      highlight: true
     };
   },
   props: {
@@ -355,8 +358,8 @@ export default {
   },
   methods: {
     formatPrice(value) {
-        let val = (value/1).toFixed(2).replace('.', ',')
-        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+      let val = (value / 1).toFixed(2).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
     },
     sendMessage(message) {
       this.connection.send(message);
@@ -398,10 +401,13 @@ export default {
         this.flag = false;
       } */
       console.log("on message");
-      if(event.data.length>1){
-        this.stockData=JSON.parse(event.data);
+      if (event.data.length > 1) {
+        this.stockData = JSON.parse(event.data);
       }
-      console.log(event.data);
+      /*  setTimeout(() => {
+        this.highlight = false;
+      }, 3000);
+      console.log(this.stockData); */
     };
     this.getMarket();
   },
@@ -416,5 +422,14 @@ export default {
 <style scoped>
 .layout-spacing {
   background-color: #192431 !important;
+}
+.up {
+  color: green;
+}
+.down {
+  color: red;
+}
+.highlight {
+  background-color: #ffff99 !important;
 }
 </style>

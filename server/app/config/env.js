@@ -1,8 +1,8 @@
 const env = {
   database: 'trading_vue',
   username: 'root',
-  // password: '',
-  password: 'root',
+  password: '',
+  // password: 'root',
   host: 'localhost',
   dialect: 'mysql',
   pool: {
