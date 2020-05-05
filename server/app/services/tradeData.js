@@ -81,54 +81,54 @@ loadTradeMarkets = () => {
     if (!markets) {
       TradeMarket.create({
         name: "USD",
-        icon: "",
+        icon: "lan1.png",
         symbol: "USD",
       });
       TradeMarket.create({
         name: "Apple",
-        icon: "",
+        icon: "lan2.png",
         symbol: "APLE",
       });
 
       TradeMarket.create({
         name: "Boeing",
-        icon: "",
+        icon: "lan3.png",
         symbol: "BA",
       });
 
       TradeMarket.create({
         name: "Inovio pharmaceuticals inc",
-        icon: "",
+        icon: "lan4.png",
         symbol: "INO",
       });
 
-      // TradeMarket.create({
-      //   name: "Chesapeake Energy Corp",
-      //   icon: "",
-      //   symbol: "CHK",
-      // });
+      TradeMarket.create({
+        name: "Chesapeake Energy Corp",
+        icon: "lan6.png",
+        symbol: "CHK",
+      });
 
       TradeMarket.create({
         name: "Netflix",
-        icon: "",
+        icon: "lan5.png",
         symbol: "NFLX",
       });
 
-      // TradeMarket.create({
-      //   name: "Whiting Petroleum",
-      //   icon: "",
-      //   symbol: "Wll",
-      // });
-      // TradeMarket.create({
-      //   name: "American Airlines",
-      //   icon: "",
-      //   symbol: "AAL",
-      // });
-      // TradeMarket.create({
-      //   name: "DNR",
-      //   icon: "",
-      //   symbol: "DNR",
-      // });
+      TradeMarket.create({
+        name: "Whiting Petroleum",
+        icon: "lan7.png",
+        symbol: "Wll",
+      });
+      TradeMarket.create({
+        name: "American Airlines",
+        icon: "lan8.png",
+        symbol: "AAL",
+      });
+      TradeMarket.create({
+        name: "DNR",
+        icon: "lan9.png",
+        symbol: "DNR",
+      });
     }
   });
 };

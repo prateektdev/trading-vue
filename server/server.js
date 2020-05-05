@@ -5,6 +5,13 @@ app.use(bodyParser.json());
 var { fetchData, loadTradeMarkets } = require("./app/services/tradeData");
 var clients = [];
 
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 require("./app/router/router.js")(app);
 
 const db = require("./app/config/db.config.js");
