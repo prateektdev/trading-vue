@@ -1,13 +1,18 @@
-const fetch = require('node-fetch');
+const fetch = require("node-fetch");
 
-fetchData = (currency) => {
-  fetch("https://httpbin.org/post", {
+const config = require("../config/config.js");
+fetchData = async(currency) => {
+  console.log('fetching for currency : ',currency)
+  let response = await fetch(config.apiFormat, {
     method: "get",
-    body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" },
   })
     .then((res) => {
       return res.json();
     })
-    .then((json) => console.log(json));
+    return JSON.stringify(response);
+};
+
+module.exports = {
+  fetchData,
 };

@@ -14,7 +14,6 @@ const Role = db.role;
 // force: true will drop the table if it already exists
 db.sequelize.sync({ force: false }).then(() => {
   console.log("Drop and Resync with { force: true }");
-  //   initial();
 });
 
 //require('./app/route/project.route.js')(app);
@@ -25,19 +24,21 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 io.on('connection', () => { console.log("connected ") });
 server.listen(3000, () => {
-  console.log('listening on *:3000');
-  initial();
+  console.log("listening on *:3000");
+  // initial();
 });
 
 // create the server
 wsServer = new WebSocketServer({
-  httpServer: server
+  httpServer: server,
 });
 wsServer.on('request', function (request) {
   if (!originIsAllowed(request.origin)) {
     // Make sure we only accept requests from an allowed origin
     request.reject();
-    console.log((new Date()) + ' Connection from origin ' + request.origin + ' rejected.');
+    console.log(
+      new Date() + " Connection from origin " + request.origin + " rejected."
+    );
     return;
   }
 
@@ -59,10 +60,15 @@ wsServer.on('request', function (request) {
   connection.sendUTF("hello bro");
 });
 
-// Create a Server
-// var server2 = app.listen(8081, function () {
-//   var host = server2.address().address;
-//   var port = server2.address().port;
+  connection.on("close", function (reasonCode, description) {
+    console.log(
+      new Date() + " Peer " + connection.remoteAddress + " disconnected."
+    );
+    clients.splice(
+      clients.findIndex((obj) => obj.remoteAddress === connection.remoteAddress)
+    );
+  });
+});
 
 //   console.log("App listening at http://%s:%s", host, port);
 // });
@@ -83,3 +89,7 @@ function initial() {
     name: "ADMIN",
   });
 }
+
+module.exports = {
+  clients,
+};

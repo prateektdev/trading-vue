@@ -706,6 +706,10 @@ export default {
     this.connection.onopen = event => {
       console.log(event);
       console.log("Successfully connected to the echo websocket server...");
+
+    setTimeout(() => {
+      this.connection.send('EUR');
+    }, 2000);
     };
     this.connection.onmessage = event => {
       console.log("event triggered");
