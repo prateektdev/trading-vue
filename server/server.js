@@ -1,8 +1,8 @@
-var WebSocketServer = require('websocket').server;
+var WebSocketServer = require("websocket").server;
 var app = require("express")();
 var bodyParser = require("body-parser");
 app.use(bodyParser.json());
-
+var fetchData = require("./app/services/tradeData").fetchData;
 var clients = [];
 
 require("./app/router/router.js")(app);
@@ -18,11 +18,11 @@ db.sequelize.sync({ force: false }).then(() => {
 
 //require('./app/route/project.route.js')(app);
 
-
-
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
-io.on('connection', () => { console.log("connected ") });
+const server = require("http").createServer(app);
+const io = require("socket.io")(server);
+io.on("connection", () => {
+  console.log("connected ");
+});
 server.listen(3000, () => {
   console.log("listening on *:3000");
   // initial();
@@ -32,7 +32,7 @@ server.listen(3000, () => {
 wsServer = new WebSocketServer({
   httpServer: server,
 });
-wsServer.on('request', function (request) {
+wsServer.on("request", function (request) {
   if (!originIsAllowed(request.origin)) {
     // Make sure we only accept requests from an allowed origin
     request.reject();
@@ -43,22 +43,52 @@ wsServer.on('request', function (request) {
   }
 
   var connection = request.accept(null, request.origin);
-  console.log((new Date()) + ' Connection accepted.');
-  connection.on('message', function (message) {
-    if (message.type === 'utf8') {
-      console.log('Received Message: ' + message.utf8Data);
+  //inserting the socket in clients array;
+  clients.push({
+    remoteAddress: connection.remoteAddress,
+    connection: connection,
+  });
+  console.log(new Date() + " Connection accepted.");
+
+  setInterval(async () => {
+    connection.sendUTF(
+      await fetchData(
+        (clients[
+          clients.findIndex(
+            (obj) => obj.remoteAddress === connection.remoteAddress
+          )
+        ] &&
+          clients[
+            clients.findIndex(
+              (obj) => obj.remoteAddress === connection.remoteAddress
+            )
+          ].currency) ||
+          "USD"
+      )
+    );
+  }, 5000);
+
+  connection.on("message", function (message) {
+    if (message.type === "utf8") {
+      console.log("Received Message: " + message.utf8Data);
       connection.sendUTF(message.utf8Data);
-    }
-    else if (message.type === 'binary') {
-      console.log('Received Binary Message of ' + message.binaryData.length + ' bytes');
+      if (
+        clients.find((obj) => obj.remoteAddress === connection.remoteAddress)
+      ) {
+        clients[
+          clients.findIndex(
+            (obj) => obj.remoteAddress === connection.remoteAddress
+          )
+        ].currency = message.utf8Data;
+        console.log("updating clients");
+      }
+    } else if (message.type === "binary") {
+      console.log(
+        "Received Binary Message of " + message.binaryData.length + " bytes"
+      );
       connection.sendBytes(message.binaryData);
     }
   });
-  connection.on('close', function (reasonCode, description) {
-    console.log((new Date()) + ' Peer ' + connection.remoteAddress + ' disconnected.');
-  });
-  connection.sendUTF("hello bro");
-});
 
   connection.on("close", function (reasonCode, description) {
     console.log(
@@ -69,9 +99,6 @@ wsServer.on('request', function (request) {
     );
   });
 });
-
-//   console.log("App listening at http://%s:%s", host, port);
-// });
 
 function originIsAllowed(origin) {
   // put logic here to detect whether the specified origin is allowed.
