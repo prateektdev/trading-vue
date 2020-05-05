@@ -63,10 +63,10 @@ wsServer.on("request", function (request) {
               (obj) => obj.remoteAddress === connection.remoteAddress
             )
           ].currency) ||
-          "USD"
+        "USD"
       )
     );
-  }, 5000);
+  }, 40000);
 
   connection.on("message", function (message) {
     if (message.type === "utf8") {

@@ -21,151 +21,16 @@
                 </div>
 
                 <div class="widget-content">
-                  <div class="transactions-list">
-                    <div class="t-item">
+                  <div class="transactions-list" v-for="item in currencyArray" :key="item.id">
+                    <div class="t-item" @click="sendMessage(item.name)">
                       <div class="t-company-name">
                         <div class="t-icon">
                           <div class="icon">
-                            <img src="assets/img/lan1.png" alt />
+                            <img :src="item.src" alt />
                           </div>
                         </div>
                         <div class="t-name">
-                          <h4>USD</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="transactions-list">
-                    <div class="t-item">
-                      <div class="t-company-name">
-                        <div class="t-icon">
-                          <div class="icon">
-                            <img src="assets/img/lan2.png" alt />
-                          </div>
-                        </div>
-                        <div class="t-name">
-                          <h4>EUR</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="transactions-list">
-                    <div class="t-item">
-                      <div class="t-company-name">
-                        <div class="t-icon">
-                          <div class="icon">
-                            <img src="assets/img/lan3.png" alt />
-                          </div>
-                        </div>
-                        <div class="t-name">
-                          <h4>JPY</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="transactions-list">
-                    <div class="t-item">
-                      <div class="t-company-name">
-                        <div class="t-icon">
-                          <div class="icon">
-                            <img src="assets/img/lan4.png" alt />
-                          </div>
-                        </div>
-                        <div class="t-name">
-                          <h4>GBP</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="transactions-list">
-                    <div class="t-item">
-                      <div class="t-company-name">
-                        <div class="t-icon">
-                          <div class="icon">
-                            <img src="assets/img/lan5.png" alt />
-                          </div>
-                        </div>
-                        <div class="t-name">
-                          <h4>AUD</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="transactions-list">
-                    <div class="t-item">
-                      <div class="t-company-name">
-                        <div class="t-icon">
-                          <div class="icon">
-                            <img src="assets/img/lan6.png" alt />
-                          </div>
-                        </div>
-                        <div class="t-name">
-                          <h4>CAD</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="transactions-list">
-                    <div class="t-item">
-                      <div class="t-company-name">
-                        <div class="t-icon">
-                          <div class="icon">
-                            <img src="assets/img/lan7.png" alt />
-                          </div>
-                        </div>
-                        <div class="t-name">
-                          <h4>CHF</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="transactions-list">
-                    <div class="t-item">
-                      <div class="t-company-name">
-                        <div class="t-icon">
-                          <div class="icon">
-                            <img src="assets/img/ca.png" alt />
-                          </div>
-                        </div>
-                        <div class="t-name">
-                          <h4>CNH</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="transactions-list">
-                    <div class="t-item">
-                      <div class="t-company-name">
-                        <div class="t-icon">
-                          <div class="icon">
-                            <img src="assets/img/lan8.png" alt />
-                          </div>
-                        </div>
-                        <div class="t-name">
-                          <h4>HKD</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="transactions-list">
-                    <div class="t-item">
-                      <div class="t-company-name">
-                        <div class="t-icon">
-                          <div class="icon">
-                            <img src="assets/img/lan9.png" alt />
-                          </div>
-                        </div>
-                        <div class="t-name">
-                          <h4>SEK</h4>
+                          <h4>{{item.name}}</h4>
                         </div>
                       </div>
                     </div>
@@ -689,7 +554,19 @@ export default {
         enable_publishing: false,
         allow_symbol_change: true
       },
-      connection: null
+      connection: null,
+      currencyArray: [
+        { id: "1", name: "USD", src: "assets/img/lan1.png" },
+        { id: "2", name: "EUR", src: "assets/img/lan2.png" },
+        { id: "3", name: "JPY", src: "assets/img/lan3.png" },
+        { id: "4", name: "GBP", src: "assets/img/lan4.png" },
+        { id: "5", name: "AUD", src: "assets/img/lan5.png" },
+        { id: "6", name: "CAD", src: "assets/img/lan6.png" },
+        { id: "7", name: "CHF", src: "assets/img/lan7.png" },
+        { id: "8", name: "CNH", src: "assets/img/ca.png" },
+        { id: "9", name: "HKD", src: "assets/img/lan8.png" },
+        { id: "10", name: "SEK", src: "assets/img/lan9.png" }
+      ]
     };
   },
   props: {
@@ -697,7 +574,9 @@ export default {
   },
   methods: {
     sendMessage(message) {
-      console.log(this.connection);
+      /* console.log(this.connection);
+      console.log(message); */
+      console.log("send message");
       this.connection.send(message);
     }
   },
@@ -707,12 +586,12 @@ export default {
       console.log(event);
       console.log("Successfully connected to the echo websocket server...");
 
-    setTimeout(() => {
-      this.connection.send('EUR');
-    }, 2000);
+      /* setTimeout(() => {
+        this.connection.send("EUR");
+      }, 40000); */
     };
     this.connection.onmessage = event => {
-      console.log("event triggered");
+      // console.log("event triggered");
       console.log(event);
     };
     let config = {
