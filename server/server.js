@@ -43,14 +43,45 @@ wsServer.on("request", function (request) {
   }
 
   var connection = request.accept(null, request.origin);
-  console.log(new Date() + " Connection accepted.");
-  connection.on("connect", function (message) {
-    clients.push({ address: connection.remoteAddress, connection: connection });
+  //inserting the socket in clients array;
+  clients.push({
+    remoteAddress: connection.remoteAddress,
+    connection: connection,
   });
+  console.log(new Date() + " Connection accepted.");
+
+  setInterval(async () => {
+    connection.sendUTF(
+      await fetchData(
+        (clients[
+          clients.findIndex(
+            (obj) => obj.remoteAddress === connection.remoteAddress
+          )
+        ] &&
+          clients[
+            clients.findIndex(
+              (obj) => obj.remoteAddress === connection.remoteAddress
+            )
+          ].currency) ||
+          "USD"
+      )
+    );
+  }, 5000);
+
   connection.on("message", function (message) {
     if (message.type === "utf8") {
       console.log("Received Message: " + message.utf8Data);
       connection.sendUTF(message.utf8Data);
+      if (
+        clients.find((obj) => obj.remoteAddress === connection.remoteAddress)
+      ) {
+        clients[
+          clients.findIndex(
+            (obj) => obj.remoteAddress === connection.remoteAddress
+          )
+        ].currency = message.utf8Data;
+        console.log("updating clients");
+      }
     } else if (message.type === "binary") {
       console.log(
         "Received Binary Message of " + message.binaryData.length + " bytes"
@@ -58,6 +89,7 @@ wsServer.on("request", function (request) {
       connection.sendBytes(message.binaryData);
     }
   });
+
   connection.on("close", function (reasonCode, description) {
     console.log(
       new Date() + " Peer " + connection.remoteAddress + " disconnected."
@@ -66,10 +98,6 @@ wsServer.on("request", function (request) {
       clients.findIndex((obj) => obj.remoteAddress === connection.remoteAddress)
     );
   });
-  connection.sendUTF("hello bro");
-  setInterval(async() => {
-    connection.sendUTF(await fetchData());
-  }, 5000);
 });
 
 function originIsAllowed(origin) {
@@ -88,3 +116,7 @@ function initial() {
     name: "ADMIN",
   });
 }
+
+module.exports = {
+  clients,
+};
