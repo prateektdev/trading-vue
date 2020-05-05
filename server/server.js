@@ -33,7 +33,7 @@ server.listen(3000, () => {
 wsServer = new WebSocketServer({
   httpServer: server,
 });
-wsServer.on("request", function (request) {
+wsServer.on("request", async function (request) {
   if (!originIsAllowed(request.origin)) {
     // Make sure we only accept requests from an allowed origin
     request.reject();
@@ -50,26 +50,12 @@ wsServer.on("request", function (request) {
     connection: connection,
   });
   console.log(new Date() + " Connection accepted.");
-
+  await sendStockData(connection);
   setInterval(async () => {
-    connection.sendUTF(
-      await fetchData(
-        (clients[
-          clients.findIndex(
-            (obj) => obj.remoteAddress === connection.remoteAddress
-          )
-        ] &&
-          clients[
-            clients.findIndex(
-              (obj) => obj.remoteAddress === connection.remoteAddress
-            )
-          ].currency) ||
-        "USD"
-      )
-    );
-  }, 15000);
+    await sendStockData(connection);
+  }, 30000);
 
-  connection.on("message", function (message) {
+  connection.on("message", async function (message) {
     if (message.type === "utf8") {
       console.log("Received Message: " + message.utf8Data);
       connection.sendUTF(message.utf8Data);
@@ -81,7 +67,7 @@ wsServer.on("request", function (request) {
             (obj) => obj.remoteAddress === connection.remoteAddress
           )
         ].currency = message.utf8Data;
-        console.log("updating clients");
+        await sendStockData(connection);
       }
     } else if (message.type === "binary") {
       console.log(
@@ -101,6 +87,23 @@ wsServer.on("request", function (request) {
   });
 });
 
+async function sendStockData(connection){
+  connection.sendUTF(
+    await fetchData(
+      (clients[
+        clients.findIndex(
+          (obj) => obj.remoteAddress === connection.remoteAddress
+        )
+      ] &&
+        clients[
+          clients.findIndex(
+            (obj) => obj.remoteAddress === connection.remoteAddress
+          )
+        ].currency) ||
+      "USD"
+    )
+  );
+}
 function originIsAllowed(origin) {
   // put logic here to detect whether the specified origin is allowed.
   return true;
