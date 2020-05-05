@@ -65,23 +65,22 @@
                             </th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody v-for="item in stockData" :key="item.id">
                           <tr>
                             <td>
                               <div class="td-content">
-                                <span class="pricing">GBP/USD</span>
+                                <span class="pricing">{{item.symbol||options.symbol}}</span>
                               </div>
                             </td>
                             <td>
                               <div class="td-content">
                                 <span class="discount-pricing">
-                                  -
-                                  0.10%
+                                 {{Math.sign(item.change)==1 ?'+':''}}{{formatPrice(item.change)}}%
                                 </span>
                               </div>
                             </td>
                             <td>
-                              <div class="td-content">170.71</div>
+                              <div class="td-content">{{item.sell}}</div>
                               <button
                                 @click="sendMessage('test send message')"
                                 class="btn btn-primary mb-4 mr-2 sell-btn"
@@ -89,221 +88,12 @@
                             </td>
                             <td>
                               <div class="td-content">
-                                <a href="#" class>131.13</a>
+                                <a href="#" class>{{item.buy}}</a>
                               </div>
                               <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
                             </td>
                           </tr>
 
-                          <tr>
-                            <td>
-                              <div class="td-content">
-                                <span class="pricing">AUD/USD</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <span class="discount-pricing">
-                                  -
-                                  0.40%
-                                </span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">170.71</div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Sell</button>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <a href="#" class>131.13</a>
-                              </div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <div class="td-content">
-                                <span class="pricing">EUR/USD</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <span class="discount-pricing">-0.10%</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">170.71</div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Sell</button>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <a href="#" class>131.13</a>
-                              </div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <div class="td-content">
-                                <span class="pricing">USD/CHF</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <span class="discount-pricing">-0.10%</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">170.71</div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Sell</button>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <a href="#" class>131.13</a>
-                              </div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <div class="td-content">
-                                <span class="pricing">USD/RUB</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <span class="discount-pricing">-0.10%</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">170.71</div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Sell</button>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <a href="#" class>131.13</a>
-                              </div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <div class="td-content">
-                                <span class="pricing">GBP/USD</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <span class="discount-pricing">-0.10%</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">170.71</div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Sell</button>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <a href="#" class>131.13</a>
-                              </div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <div class="td-content">
-                                <span class="pricing">GBP/USD</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <span class="discount-pricing">-0.10%</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">170.71</div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Sell</button>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <a href="#" class>131.13</a>
-                              </div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <div class="td-content">
-                                <span class="pricing">GBP/USD</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <span class="discount-pricing">-0.10%</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">170.71</div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Sell</button>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <a href="#" class>131.13</a>
-                              </div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <div class="td-content">
-                                <span class="pricing">GBP/USD</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <span class="discount-pricing">-0.10%</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">170.71</div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Sell</button>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <a href="#" class>131.13</a>
-                              </div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
-                            </td>
-                          </tr>
-
-                          <tr>
-                            <td>
-                              <div class="td-content">
-                                <span class="pricing">GBP/USD</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <span class="discount-pricing">-0.10%</span>
-                              </div>
-                            </td>
-                            <td>
-                              <div class="td-content">170.71</div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Sell</button>
-                            </td>
-                            <td>
-                              <div class="td-content">
-                                <a href="#" class>131.13</a>
-                              </div>
-                              <button class="btn btn-primary mb-4 mr-2 sell-btn">Buy</button>
-                            </td>
-                          </tr>
                         </tbody>
                       </table>
                     </div>
@@ -544,7 +334,7 @@ export default {
     return {
       options: {
         autosize: true,
-        symbol: "NASDAQ:AAPL",
+        symbol: "USD",
         interval: "D",
         timezone: "Etc/UTC",
         theme: "dark",
@@ -556,6 +346,7 @@ export default {
       },
       connection: null,
       marketArray: [],
+      stockData:[],
       flag: false
     };
   },
@@ -563,6 +354,10 @@ export default {
     msg: String
   },
   methods: {
+    formatPrice(value) {
+        let val = (value/1).toFixed(2).replace('.', ',')
+        return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+    },
     sendMessage(message) {
       this.connection.send(message);
       this.options.symbol = message;
@@ -603,6 +398,9 @@ export default {
         this.flag = false;
       } */
       console.log("on message");
+      if(event.data.length>1){
+        this.stockData=JSON.parse(event.data);
+      }
       console.log(event.data);
     };
     this.getMarket();
