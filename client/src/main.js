@@ -14,7 +14,7 @@ Vue.use(VueRouter)
 
 Vue.use(LoadScript)
 
-Vue.prototype.$apiUrl = "test url";
+Vue.prototype.$apiUrl = "http://localhost:3000/api/";
 
 /* Vue.loadScript("https://code.jquery.com/jquery-1.12.4.min.js").then(() => console.log("easing loaded"));
 mayur

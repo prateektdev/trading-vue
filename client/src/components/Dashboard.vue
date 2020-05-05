@@ -21,16 +21,16 @@
                 </div>
 
                 <div class="widget-content">
-                  <div class="transactions-list" v-for="item in currencyArray" :key="item.id">
-                    <div class="t-item" @click="sendMessage(item.name)">
+                  <div class="transactions-list" v-for="item in marketArray" :key="item.id">
+                    <div class="t-item" @click="sendMessage(item.symbol)">
                       <div class="t-company-name">
                         <div class="t-icon">
                           <div class="icon">
-                            <img :src="item.src" alt />
+                            <img :src="'assets/img/'+item.icon" alt />
                           </div>
                         </div>
                         <div class="t-name">
-                          <h4>{{item.name}}</h4>
+                          <h4>{{item.symbol}}</h4>
                         </div>
                       </div>
                     </div>
@@ -555,18 +555,8 @@ export default {
         allow_symbol_change: true
       },
       connection: null,
-      currencyArray: [
-        { id: "1", name: "USD", src: "assets/img/lan1.png" },
-        { id: "2", name: "EUR", src: "assets/img/lan2.png" },
-        { id: "3", name: "JPY", src: "assets/img/lan3.png" },
-        { id: "4", name: "GBP", src: "assets/img/lan4.png" },
-        { id: "5", name: "AUD", src: "assets/img/lan5.png" },
-        { id: "6", name: "CAD", src: "assets/img/lan6.png" },
-        { id: "7", name: "CHF", src: "assets/img/lan7.png" },
-        { id: "8", name: "CNH", src: "assets/img/ca.png" },
-        { id: "9", name: "HKD", src: "assets/img/lan8.png" },
-        { id: "10", name: "SEK", src: "assets/img/lan9.png" }
-      ]
+      marketArray: [],
+      flag: false
     };
   },
   props: {
@@ -574,10 +564,25 @@ export default {
   },
   methods: {
     sendMessage(message) {
-      /* console.log(this.connection);
-      console.log(message); */
-      console.log("send message");
       this.connection.send(message);
+      this.options.symbol = message;
+      this.flag = true;
+    },
+    getMarket() {
+      let config = {
+        headers: {
+          Accept: "application/json"
+        }
+      };
+      axios
+        .get(`${this.$apiUrl}trading/markets`, config)
+        .then(res => {
+          this.marketArray = res.data.markets;
+          // this.connection.send(this.marketArray[0].symbol);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   created() {
@@ -585,28 +590,22 @@ export default {
     this.connection.onopen = event => {
       console.log(event);
       console.log("Successfully connected to the echo websocket server...");
-
-      /* setTimeout(() => {
-        this.connection.send("EUR");
-      }, 40000); */
     };
     this.connection.onmessage = event => {
-      // console.log("event triggered");
-      console.log(event);
+      /* if (!this.flag) {
+        const data = JSON.parse(event.data);
+        console.log(data);
+        const dataArr = Object.keys(data);
+        console.log(dataArr);
+      } else {
+        console.log("on message");
+        console.log(event);
+        this.flag = false;
+      } */
+      console.log("on message");
+      console.log(event.data);
     };
-    let config = {
-      headers: {
-        Accept: "application/json"
-      }
-    };
-    axios
-      .get("https://jsonplaceholder.typicode.com/todos/1", config)
-      .then(res => {
-        console.info(res.data);
-      })
-      .catch(err => {
-        console.info(err);
-      });
+    this.getMarket();
   },
   mounted() {
     $("input[name='demo_vertical']").TouchSpin({
