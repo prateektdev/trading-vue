@@ -1,27 +1,24 @@
 module.exports = (sequelize, Sequelize) => {
-  const User = sequelize.define("tradeMarket", {
-    firstname: {
+  const TradeMarket = sequelize.define("tradeMarket", {
+    name: {
       type: Sequelize.STRING,
     },
-    lastname: {
+    icon: {
       type: Sequelize.STRING,
     },
-    age: {
-      type: Sequelize.Number,
-    },
-    username: {
+    symbol: {
       type: Sequelize.STRING,
     },
-    email: {
-      type: Sequelize.STRING,
+    buy: {
+      type: Sequelize.DataTypes.DECIMAL(10,2),
     },
-    password: {
-      type: Sequelize.STRING,
-	},
-	isActive:{
-		type:Sequelize.BOOLEAN
-	}
+    sell: {
+      type: Sequelize.DataTypes.DECIMAL(10,2),
+    },
+    change: {
+      type: Sequelize.DataTypes.DECIMAL(10,2),
+    },
   });
 
-  return User;
+  return TradeMarket;
 };

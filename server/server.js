@@ -2,7 +2,7 @@ var WebSocketServer = require("websocket").server;
 var app = require("express")();
 var bodyParser = require("body-parser");
 app.use(bodyParser.json());
-var fetchData = require("./app/services/tradeData").fetchData;
+var { fetchData, loadTradeMarkets } = require("./app/services/tradeData");
 var clients = [];
 
 require("./app/router/router.js")(app);
@@ -25,6 +25,7 @@ io.on("connection", () => {
 });
 server.listen(3000, () => {
   console.log("listening on *:3000");
+  loadTradeMarkets();
   // initial();
 });
 
@@ -66,7 +67,7 @@ wsServer.on("request", function (request) {
         "USD"
       )
     );
-  }, 40000);
+  }, 15000);
 
   connection.on("message", function (message) {
     if (message.type === "utf8") {
