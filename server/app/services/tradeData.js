@@ -78,12 +78,14 @@ loadTradeMarketsData = async() => {
 loadTradeMarkets = () => {
   TradeMarket.find({}).then(async (markets) => {
     await markets;
-    if (!markets) {
+    if (!markets||markets.length<9) {
+
       TradeMarket.create({
         name: "USD",
         icon: "lan1.png",
         symbol: "USD",
       });
+
       TradeMarket.create({
         name: "Apple",
         icon: "lan2.png",
@@ -119,15 +121,23 @@ loadTradeMarkets = () => {
         icon: "lan7.png",
         symbol: "Wll",
       });
+
       TradeMarket.create({
         name: "American Airlines",
         icon: "lan8.png",
         symbol: "AAL",
       });
+
       TradeMarket.create({
         name: "DNR",
         icon: "lan9.png",
         symbol: "DNR",
+      });
+
+      TradeMarket.create({
+        name: "Boeing",
+        icon: "lan3.png",
+        symbol: "BA",
       });
     }
   });
